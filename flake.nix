@@ -4,7 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    # nix-gaming.url = "github:fufexan/nix-gaming";
+#    nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,14 +23,14 @@
       channelsConfig.allowUnfree = true;
       # sharedOverlays = [ inputOverlays localOverlays ];
 
-#      hostDefaults.extraArgs = { inherit inputs user; };
-#      hostDefaults.modules = [
-#        home-manager.nixosModules.home-manager {
-#          home-manager.useGlobalPkgs = true; # Probably not needed
-#          home-manager.useUserPackages = true;
-#          home-manager.extraSpecialArgs = { inherit user; };
-#        }
-#      ];
+      hostDefaults.extraArgs = { inherit inputs user; };
+      hostDefaults.modules = [
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true; # Probably not needed
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit user; };
+        }
+      ];
 
       hosts = {
         nixos.modules = [
@@ -39,7 +39,7 @@
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           home-manager.nixosModules.home-manager {
             home-manager.users.${user}.imports = [
- #             ./home.nix
+              ./home.nix
             ];
           }
         ];
