@@ -95,56 +95,56 @@ programs = {
 };
 
 users.users.cullvox = {
-	isNormalUser = true;
-	description = "Caden Miller";
-	extraGroups = [ "networkmanager" "wheel" ];
-	packages = with pkgs; [
-    
-		# Shell
-		# unstable.nitch
+  isNormalUser = true;
+  description = "Caden Miller";
+  extraGroups = [ "networkmanager" "wheel" ];
+  packages = with pkgs; [
 
-      # Make app images run
-      appimage-run
-                                            		
-  		# Building and Compiling Tools
-  		git
-  		gnumake
-  		gcc
-  		cmake
+    appimage-run
+                                                
+    # Building and Compiling Tools
+    git
+    gnumake
+    gcc
+    cmake
 
-  		# File Editing and Word Processing
-  		vim	
-  		helix
-  		vscode
-  		libreoffice-fresh
-      hunspell
-      blender
-      gimp
-      darktable
-      davinci-resolve
-      obs-studio
-                                                                        		
-  		# Internet and Communications
-  		spotify
-  		librewolf
-  		ungoogled-chromium
-  		discord
-      brave
-      cinny
+    # File Editing and Word Processing
+    vim	
+    helix
+    vscode
+    libreoffice-fresh
+    hunspell
+    blender
+    gimp
+    darktable
+    davinci-resolve
+    obs-studio
+                                                                            
+    # Internet and Communication
+    spotify
+    librewolf
+    ungoogled-chromium
+    discord
+    brave
+    cinny
             
-      # Sound and Audio
-      easyeffects
+    # Sound and Audio
+    easyeffects
       
-		# Gaming and Entertainment
-		steam
+    # Gaming and Entertainment
+    steam
     steam-run
     grapejuice
     lutris
     prismlauncher
+    
+  ];
+  packages.vscode..extensions = with pkgs; [
+    vscode-extensions.ms-vscode.cpptools
   ];
 };
 
-  nixpkgs.overlays = [
+nixpkgs.overlays = [
     (self: super: {
       discord-openasar = super.discord.override { 
         nss = pkgs.nss_latest; withOpenASAR = true; };
@@ -162,7 +162,7 @@ users.users.cullvox = {
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  ];
+];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
