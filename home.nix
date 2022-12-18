@@ -7,10 +7,9 @@
     sessionPath = [
       "$HOME/.local/bin"
     ];
-
-    programs.vscode.enable = true;
-    programs.vscode.extensions = with pkgs; [
-      vscode-extensions.ms-vscode.cpptools
-    ];
   };
+  programs.vscode.enable = true;
+  programs.vscode.extensions = with pkgs.vscode-extensions; [
+    ms-vscode.cpptools
+  ];
 }
