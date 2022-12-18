@@ -23,17 +23,17 @@
       channelsConfig.allowUnfree = true;
       # sharedOverlays = [ inputOverlays localOverlays ];
 
-      hostDefaults.extraArgs = { inherit inputs user; };
-      hostDefaults.modules = [
-        home-manager.nixosModules.home-manager {
-          # home-manager.useGlobalPkgs = true; # Probably not needed
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit user; };
-        }
-      ];
+#      hostDefaults.extraArgs = { inherit inputs user; };
+#      hostDefaults.modules = [
+#        home-manager.nixosModules.home-manager {
+#          home-manager.useGlobalPkgs = true; # Probably not needed
+#          home-manager.useUserPackages = true;
+#          home-manager.extraSpecialArgs = { inherit user; };
+#        }
+#      ];
 
       hosts = {
-        nix-desktop.modules = [
+        nixos.modules = [
           ./configuration.nix
           inputs.nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
