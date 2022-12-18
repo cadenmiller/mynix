@@ -139,9 +139,6 @@ users.users.cullvox = {
     prismlauncher
     
   ];
-  packages.vscode..extensions = with pkgs; [
-    vscode-extensions.ms-vscode.cpptools
-  ];
 };
 
 nixpkgs.overlays = [
