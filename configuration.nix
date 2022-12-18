@@ -137,6 +137,12 @@ users.users.cullvox = {
     grapejuice
     lutris
     prismlauncher
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        ms-vscode.cpptools
+        llvm-vs-code-extensions.vscode-clangd
+      ];
+    })
     
   ];
 };
