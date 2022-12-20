@@ -4,7 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/v0.19.2beta";
 #    nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
       url = "github:nix-community/home-manager";
