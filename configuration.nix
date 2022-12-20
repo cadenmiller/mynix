@@ -101,6 +101,7 @@ users.users.cullvox = {
   packages = with pkgs; [
 
     appimage-run
+    android-tools
                                                 
     # Building and Compiling Tools
     git
@@ -118,7 +119,7 @@ users.users.cullvox = {
     darktable
     davinci-resolve
     obs-studio
-    etcher
+    
                                                                             
     # Internet and Communication
     spotify
