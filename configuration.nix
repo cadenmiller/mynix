@@ -77,9 +77,11 @@ pkgs.linuxPackages_xanmod_latest;
 
 hardware.steam-hardware.enable = true;
 programs = {
+
   steam = {
     enable = true;
   };
+
   gamemode = {
     enable = true;
     settings = {
@@ -92,6 +94,12 @@ programs = {
       };
     };
   };
+
+  hyprland = {
+    enable = true;
+    nvidiaPatches = true;
+  };
+
 };
 
 users.users.cullvox = {
@@ -119,16 +127,19 @@ users.users.cullvox = {
     darktable
     davinci-resolve
     obs-studio
-    
-                                                                            
+                                                   
     # Internet and Communication
     spotify
     librewolf
     ungoogled-chromium
-    discord
     brave
     cinny
     ledger-live-desktop
+
+    (discord.override { 
+      withOpenASAR = true; 
+      nss = pkgs.nss_latest; 
+    })
             
     # Sound and Audio
     easyeffects
@@ -143,12 +154,6 @@ users.users.cullvox = {
   ];
 };
 
-nixpkgs.overlays = [
-    (self: super: {
-      discord-openasar = super.discord.override { 
-        nss = pkgs.nss_latest; withOpenASAR = true; };
-    })
-  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

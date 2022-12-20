@@ -4,6 +4,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    hyprland.url = "github:hyprwm/Hyprland";
 #    nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -37,6 +38,7 @@
           ./configuration.nix
           inputs.nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+          inputs.hyprland.nixosModules.default
           home-manager.nixosModules.home-manager {
             home-manager.users.${user}.imports = [
               ./home.nix
