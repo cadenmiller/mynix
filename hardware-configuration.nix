@@ -9,9 +9,10 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [  ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "nvidia_drm.modeset=1" ]
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/3b8e7b9b-4028-4c79-b4fb-127f26f9f543";

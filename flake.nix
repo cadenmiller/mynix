@@ -11,6 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
   outputs = inputs @ { self, nixpkgs, utils, home-manager, ... }:
     let
       user = "cullvox";
@@ -23,6 +24,10 @@
 
       channelsConfig.allowUnfree = true;
       # sharedOverlays = [ inputOverlays localOverlays ];
+
+      sharedOverlays = [
+        inputs.hyprland.overlays.default
+      ];
 
       hostDefaults.extraArgs = { inherit inputs user; };
       hostDefaults.modules = [
