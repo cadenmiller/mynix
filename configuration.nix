@@ -111,7 +111,6 @@ users.users.cullvox = {
     # File Editing and Word Processing
     vim	
     helix
-    vscode
     libreoffice-fresh
     hunspell
     blender
@@ -119,6 +118,7 @@ users.users.cullvox = {
     darktable
     davinci-resolve
     obs-studio
+    etcher
                                                                             
     # Internet and Communication
     spotify
@@ -127,6 +127,7 @@ users.users.cullvox = {
     discord
     brave
     cinny
+    ledger-live-desktop
             
     # Sound and Audio
     easyeffects
@@ -137,13 +138,7 @@ users.users.cullvox = {
     grapejuice
     lutris
     prismlauncher
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        ms-vscode.cpptools
-        llvm-vs-code-extensions.vscode-clangd
-      ];
-    })
-    
+    lunar-client
   ];
 };
 
