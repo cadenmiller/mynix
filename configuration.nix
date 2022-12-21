@@ -10,22 +10,19 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+    };
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  };
 
-  # Graphics Hardware
-  hardware.opengl.driSupport32Bit = true;
-  
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -34,24 +31,9 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -68,127 +50,108 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-
-boot.kernelPackages = 
-pkgs.linuxPackages_xanmod_latest;
-
-hardware.steam-hardware.enable = true;
-programs = {
-
-  steam = {
-    enable = true;
+  hardware = {
+    steam-hardware.enable = true;
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+    };
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
-  gamemode = {
-    enable = true;
-    settings = {
-      general = {
-        reaper_freq = 5;
-        defaultgov = "performance";
-        softrealtime = "auto";
-        renice = 0;
-        ioprio = 0;          
+  environment.sessionVariables = rec {
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
+  
+  programs = {
+    steam = {
+      enable = true;
+    };
+    gamemode = {
+      enable = true;
+      settings = {
+        general = {
+          reaper_freq = 5;
+          defaultgov = "performance";
+          softrealtime = "auto";
+          renice = 0;
+          ioprio = 0;          
+        };
+      };
+    };
+    hyprland = {
+      enable = true;
+      package = pkgs.hyprland.override {
+        nvidiaPatches = true;
       };
     };
   };
 
-  hyprland = {
-    enable = true;
-    package = pkgs.hyprland.override {
-      nvidiaPatches = true;
-    };
+  users.users.cullvox = {
+    isNormalUser = true;
+    description = "Caden Miller";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+
+      appimage-run
+      android-tools
+      kitty
+      wofi
+      waybar
+      nerdfonts
+                                                          
+      # Building and Compiling Tools
+      git
+      gnumake
+      gcc
+      cmake
+
+      # File Editing and Word Processing
+      vim	
+      helix
+      libreoffice-fresh
+      hunspell
+      blender
+      gimp
+      darktable
+      davinci-resolve
+      obs-studio
+                                                    
+      # Internet and Communication
+      spotify
+      librewolf
+      ungoogled-chromium
+      brave
+      cinny
+      ledger-live-desktop
+
+      (discord.override { 
+        withOpenASAR = true; 
+        nss = pkgs.nss_latest; 
+      })
+              
+      # Sound and Audio
+      easyeffects
+        
+      # Gaming and Entertainment
+      steam
+      steam-run
+      grapejuice
+      lutris
+      prismlauncher
+      lunar-client
+    ];
   };
-
-};
-
-users.users.cullvox = {
-  isNormalUser = true;
-  description = "Caden Miller";
-  extraGroups = [ "networkmanager" "wheel" ];
-  packages = with pkgs; [
-
-    appimage-run
-    android-tools
-                                                
-    # Building and Compiling Tools
-    git
-    gnumake
-    gcc
-    cmake
-
-    # File Editing and Word Processing
-    vim	
-    helix
-    libreoffice-fresh
-    hunspell
-    blender
-    gimp
-    darktable
-    davinci-resolve
-    obs-studio
-                                                   
-    # Internet and Communication
-    spotify
-    librewolf
-    ungoogled-chromium
-    brave
-    cinny
-    ledger-live-desktop
-
-    (discord.override { 
-      withOpenASAR = true; 
-      nss = pkgs.nss_latest; 
-    })
-            
-    # Sound and Audio
-    easyeffects
-      
-    # Gaming and Entertainment
-    steam
-    steam-run
-    grapejuice
-    lutris
-    prismlauncher
-    lunar-client
-  ];
-};
 
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
