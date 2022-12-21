@@ -88,6 +88,10 @@
     };
   };
 
+  fonts.fonts = with pkgs; [
+    nerdfonts
+  ];
+
   users.users.cullvox = {
     isNormalUser = true;
     description = "Caden Miller";
@@ -99,7 +103,6 @@
       kitty
       wofi
       waybar
-      nerdfonts
                                                           
       # Building and Compiling Tools
       git
