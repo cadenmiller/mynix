@@ -101,8 +101,13 @@
       appimage-run
       android-tools
       kitty
+      xterm
       wofi
       waybar
+      hyprpaper
+      wget
+      libsForQt5.breeze-icons
+      dolphin
                                                           
       # Building and Compiling Tools
       git
@@ -119,8 +124,12 @@
       gimp
       darktable
       davinci-resolve
+      celluloid
       obs-studio
-                                                    
+
+      # Game Engines
+      unityhub
+
       # Internet and Communication
       spotify
       librewolf
@@ -136,7 +145,7 @@
               
       # Sound and Audio
       easyeffects
-        
+      
       # Gaming and Entertainment
       steam
       steam-run

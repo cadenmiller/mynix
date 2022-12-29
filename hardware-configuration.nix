@@ -23,6 +23,12 @@
     { device = "/dev/disk/by-uuid/9481-A6A0";
       fsType = "vfat";
     };
+  
+  fileSystems."/run/media/cullvox/87e0da52-c869-4d6a-aed0-0b0a8782039e" =
+    {
+      device = "/dev/disk/by-uuid/87e0da52-c869-4d6a-aed0-0b0a8782039e";
+      fsType = "btrfs";
+    };
 
   swapDevices = [ ];
 
