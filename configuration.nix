@@ -34,6 +34,8 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.openssh.enable = true;
+
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -85,7 +87,7 @@
       };
     };
     hyprland = {
-      enable = true;
+      enable = false;
       package = pkgs.hyprland.override {
         nvidiaPatches = true;
       };
@@ -101,18 +103,15 @@
     description = "Caden Miller";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-
-      appimage-run
-      android-tools
-      kitty
       xterm
-      wofi
+      alacritty
       waybar
       hyprpaper
       wget
       libsForQt5.breeze-icons
+      libsForQt5.ark
       dolphin
-                                                          
+                               
       # Building and Compiling Tools
       git
       gnumake
@@ -120,25 +119,19 @@
       cmake
 
       # File Editing and Word Processing
-      vim	
       helix
       libreoffice-fresh
       hunspell
       blender
       gimp
       darktable
-      davinci-resolve
       celluloid
       obs-studio
-
-      # Game Engines
-      unityhub
+      davinci-resolve
 
       # Internet and Communication
       spotify
-      librewolf
-      ungoogled-chromium
-      brave
+      firefox
       cinny
       ledger-live-desktop
 
