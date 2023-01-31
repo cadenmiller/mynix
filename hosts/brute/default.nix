@@ -19,7 +19,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 
-  networking.hostName = "mini"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
@@ -50,53 +50,88 @@
     #media-session.enable = true;
   };
 
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  hardware = {
+    steam-hardware.enable = true;
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;
+    };
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
+
   environment.sessionVariables = rec {
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono"];
-    })
-  ];
-
-  hardware = {
-    bluetooth.enable = true;
-    opengl = {
+  
+  programs = {
+    steam = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
+    };
+    gamemode = {
+      enable = true;
+      settings = {
+        general = {
+          reaper_freq = 5;
+          defaultgov = "performance";
+          softrealtime = "auto";
+          renice = 0;
+          ioprio = 0;          
+        };
+      };
+    };
+    hyprland = {
+      enable = false;
+      package = pkgs.hyprland.override {
+        nvidiaPatches = true;
+      };
     };
   };
+
+  fonts.fonts = with pkgs; [
+    nerdfonts
+  ];
 
   users.users.cullvox = {
     isNormalUser = true;
     description = "Caden Miller";
     extraGroups = [ "networkmanager" "wheel" ];
-    initialPassword = "abc123";
     packages = with pkgs; [
       xterm
+      alacritty
       waybar
       hyprpaper
       wget
-      wofi
-      waybar
-
-      alacritty
+      libsForQt5.breeze-icons
+      libsForQt5.ark
+      dolphin
                                
       # Building and Compiling Tools
       git
+      gnumake
+      gcc
+      cmake
 
       # File Editing and Word Processing
       helix
+      libreoffice-fresh
+      hunspell
+      blender
+      gimp
+      darktable
+      celluloid
+      obs-studio
+      davinci-resolve
 
       # Internet and Communication
       spotify
       firefox
+      cinny
+      ledger-live-desktop
 
       (discord.override { 
         withOpenASAR = true; 
@@ -105,6 +140,14 @@
               
       # Sound and Audio
       easyeffects
+      
+      # Gaming and Entertainment
+      steam
+      steam-run
+      grapejuice
+      lutris
+      prismlauncher
+      lunar-client
     ];
   };
 
@@ -112,6 +155,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.systemPackages = with pkgs; [
   ];
