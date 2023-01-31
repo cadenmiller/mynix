@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs,  home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (nixpkgs.lib) filerAttrs;
       inherit (builtins) mapAttrs elem;
