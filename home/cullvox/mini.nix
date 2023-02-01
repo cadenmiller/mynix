@@ -3,5 +3,6 @@
     ./common/global.nix
     ./global
     ./desktop/hyprland
+    ./programming
   ];
 }
