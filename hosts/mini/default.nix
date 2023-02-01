@@ -8,6 +8,8 @@
       ./hardware-configuration.nix
       
       ../common/users/cullvox
+      ../common/global/system.nix
+      ../common/global/sound.nix
     ];
 
 
@@ -22,36 +24,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 
-  networking.hostName = "mini"; # Define your hostname.
-# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  services.openssh.enable = true;
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  networking.hostName = "mini";
 
   environment.sessionVariables = rec {
     WLR_NO_HARDWARE_CURSORS = "1";
@@ -82,20 +55,26 @@
     extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "abc123";
     packages = with pkgs; [
+      (pkgs.python3.withPackages (ps: [
+        ps.requests
+      ]))
+
+      networkmanagerapplet
+      playerctl
+      brightnessctl
+      gammastep
       xterm
       waybar
       hyprpaper
-      wget
       wofi
       waybar
+    
+      wpa_supplicant_gui
+
+      python39
+      python39Packages.requests
 
       alacritty
-                               
-      # Building and Compiling Tools
-      git
-
-      # File Editing and Word Processing
-      helix
 
       # Internet and Communication
       spotify
@@ -115,8 +94,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
-  environment.systemPackages = with pkgs; [
+  # Some nice packages for the users to get started with.
+  environment.systemPackages = with pkgs; [    
+    helix
+    nitch
+    git
+    wget
   ];
 
   # This value determines the NixOS release from which the default
