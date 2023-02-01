@@ -55,38 +55,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "abc123";
     packages = with pkgs; [
-      (pkgs.python3.withPackages (ps: [
-        ps.requests
-      ]))
-
-      networkmanagerapplet
-      playerctl
-      brightnessctl
-      gammastep
-      xterm
-      waybar
-      hyprpaper
-      wofi
-      waybar
-    
-      wpa_supplicant_gui
-
-      python39
-      python39Packages.requests
-
-      alacritty
-
-      # Internet and Communication
-      spotify
-      firefox
-
-      (discord.override { 
-        withOpenASAR = true; 
-        nss = pkgs.nss_latest; 
-      })
-              
-      # Sound and Audio
-      easyeffects
     ];
   };
 
