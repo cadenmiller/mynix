@@ -7,9 +7,10 @@
             ps.requests
         ]))
 
-        python39 # Good old python
-        python39Packages.requests # For wttr.in on waybar
+        #python39 # Good old python
+        #python39Packages.requests # For wttr.in on waybar
 
+        xdg-utils
 
         networkmanagerapplet # Makes controlling wpa-enterprise connections on NM easier
         playerctl # Controls pause/play/next on audio/video
@@ -20,12 +21,13 @@
         alacritty # Better terminal emulator
         firefox # Synced firefox is very good
         easyeffects # Sound effects for mics/speakers, mostly used for mic suppression
+        #libreoffice-still # Word processor, Presentation software and more
+        helvum # Pipewire viewer and editor
+        pavucontrol # Pulse Audio/Pipewire audio control gui program
 
         # UNFREE
         spotify # Good music cannot go away from it
-        (discord.override { withOpenASAR = true; nss = pkgs.nss_latest; }) # Better better discord, much more efficent
+        (discord.override 
+            { withOpenASAR = true; nss = pkgs.nss_latest; }) # Better better discord, much more efficent
     ];
-    home.sessionVariables = {
-        BROWSER = "firefox";
-    }
 }

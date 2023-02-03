@@ -3,7 +3,7 @@
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
 monitor=,preferred,auto,1
-monitor=HDMI-A-1,2560x1440@165,auto,1
+monitor=DP-1,2560x1440@120,auto,1
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
@@ -101,7 +101,7 @@ device:epic mouse V1 {
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
-windowrule = tile,^(.spotify)$
+windowrule = tile, ^(.spotify)$
 windowrulev2 = opacity 0.8 0.8,class:^(alacritty)$
 windowrule = opacity 0.5 override 0.5 override,^(alacritty)$
 
@@ -165,5 +165,5 @@ bind=, XF86AudioPrev, exec, playerctl previous
 bind=, XF86AudioNext, exec, playerctl next
 
 # Brightness Bindings
-
+bind=, XF86MonBrightnessUp, exec, gammastep -l 39.863850:-75.132339 -b 0.1%+
 ''

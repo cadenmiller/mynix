@@ -12,7 +12,7 @@
       ../common/global/sound.nix
     ];
 
-
+  # Boot information
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -24,6 +24,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
   };
 
+  # Set our hostname here, instead of globally
   networking.hostName = "mini";
 
   environment.sessionVariables = rec {
@@ -35,6 +36,7 @@
     })
   ];
 
+  # Hardware options
   hardware = {
     bluetooth.enable = true;
     opengl = {
@@ -53,7 +55,7 @@
     isNormalUser = true;
     description = "Caden Miller";
     extraGroups = [ "networkmanager" "wheel" ];
-    initialPassword = "abc123";
+    hashedPassword = "$y$j9T$Z9ch6k8.kDRQ3XtqvmY47/$CgI41fvLMnoXbXqyrOR956K7emReG5QiAzFCKcr92n6";
     packages = with pkgs; [
     ];
   };
@@ -68,6 +70,7 @@
     nitch
     git
     wget
+    canon-cups-ufr2
   ];
 
   # This value determines the NixOS release from which the default

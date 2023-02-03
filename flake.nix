@@ -1,3 +1,31 @@
+# Welcome to my (cullvox's)  nixos config!
+# My goal is to create a flake that I can understand, edit and add to down the line. 
+#
+# This flakes concepts are adapted github:Misterio77's nix flake.
+# 
+# I have two computers, my laptop (Mini) and my desktop (Brute).
+# These are the names of the computers in the config, I don't actually call them that.
+#
+# First, my laptop has considerably less power than my desktop and any laptop that I may have
+# in the future. So I have consolidated what Brute was doing into a better, more understandable
+# format for Mini.
+#
+# Fun fact about Mini: 'Mini's laptop is currently a MacBook Pro 13" Mid 2012 running NixOS'
+#
+# Brute, my desktop has much more capability than Mini, but I find myself using my laptop
+# for most things right now since I am going through college right now. Brute is powerful
+# but mistakenly has an Nvidia RTX 2070, and honsetly Nvidia has been getting better with
+# Linux things but it still is bad. Brute unfortunately  has to dual boot Windows in order 
+# to play games like Warzone 2 because of anticheat problems on linux as well.
+#
+# Fun fact about Brute: 'It has an Intel Core i5 of some kind, I can't remember'
+#
+# Those are my computers, and NixOS has to adapt around their hardware. Thats where 'mynix'
+# flake had to come in to provide my ultimate computer science nerd functionality onto it.
+# Both laptop and desktop now basically running the same software because of NixOS.
+#
+# I hope that I didn't slip up and let a password or key get in the repo at some point.
+
 {
   description = "Caden Miller's NixOS config";
   
