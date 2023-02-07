@@ -1,0 +1,16 @@
+--2023-02-04 23:08:52--  https://source.unsplash.com/2560x1440/?stars,nature,sea,wather
+Resolving source.unsplash.com (source.unsplash.com)... 3.220.57.224, 54.91.59.199, 3.232.242.170, ...
+Connecting to source.unsplash.com (source.unsplash.com)|3.220.57.224|:443... connected.
+HTTP request sent, awaiting response... 302 ‘wget-log’
+Location: https://images.unsplash.com/photo-1498278854500-7c206daa073b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1440&ixid=MnwxfDB8MXxyYW5kb218MHx8c3RhcnMsbmF0dXJlLHNlYSx3YXRoZXJ8fHx8fHwxNjc1NTcwMTM0&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=2560 [following]
+--2023-02-04 23:08:54--  https://images.unsplash.com/photo-1498278854500-7c206daa073b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1440&ixid=MnwxfDB8MXxyYW5kb218MHx8c3RhcnMsbmF0dXJlLHNlYSx3YXRoZXJ8fHx8fHwxNjc1NTcwMTM0&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=2560
+Resolving images.unsplash.com (images.unsplash.com)... 2a04:4e42:1c::720, 151.101.118.208
+Connecting to images.unsplash.com (images.unsplash.com)|2a04:4e42:1c::720|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 300386 (293K) [image/jpeg]
+Saving to: ‘/home/cullvox/Wallpapers/wallpaper.jpg’
+
+/home/cullvox/Wallpapers/wallpaper.jpg    0%[                                                                                ]       0  --.-KB/s               /home/cullvox/Wallpapers/wallpaper.jpg  100%[===============================================================================>] 293.35K  --.-KB/s    in 0.09s   
+
+2023-02-04 23:08:54 (3.33 MB/s) - ‘/home/cullvox/Wallpapers/wallpaper.jpg’ saved [300386/300386]
+

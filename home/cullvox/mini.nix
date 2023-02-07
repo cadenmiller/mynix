@@ -5,5 +5,6 @@
     ./desktop/hyprland
     ./features/programming
     ./features/utils
+    ./features/gaming
   ];
 }

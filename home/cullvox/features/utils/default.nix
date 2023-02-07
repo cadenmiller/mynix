@@ -16,18 +16,25 @@
         playerctl # Controls pause/play/next on audio/video
         gammastep # Used for brightness control and day/night cycle management
         waybar # Gives some nice bar
-        hyprpaper # Gives some nice walls
+        swaybg # Gives some nice walls
         wofi # A easy and powerful launcher
         alacritty # Better terminal emulator
         firefox # Synced firefox is very good
         easyeffects # Sound effects for mics/speakers, mostly used for mic suppression
-        #libreoffice-still # Word processor, Presentation software and more
+        #libreoffice-fresh # Word processor, Presentation software and more
         helvum # Pipewire viewer and editor
         pavucontrol # Pulse Audio/Pipewire audio control gui program
+        element-desktop # Matrix communicator and better alternative to discord
+        #jdk18
+        ventoy-bin # Easily create flash drives that can launch isos
+        
+            
+        # WII
+        wiimms-iso-tools
 
         # UNFREE
         spotify # Good music cannot go away from it
-        (discord.override 
-            { withOpenASAR = true; nss = pkgs.nss_latest; }) # Better better discord, much more efficent
+        zoom-us
+        (discord.override { withOpenASAR = true; }) # Better better discord, much more efficent
     ];
 }

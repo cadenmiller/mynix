@@ -1,21 +1,11 @@
 { }: ''
 
+monitor=,preferred,1920x0,1
+monitor=DP-1,highrr,0x0,1
 
-# See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,auto,1
-monitor=DP-1,2560x1440@120,auto,1
+exec = ~/.config/hypr/wallpaper.sh
+exec-once = waybar & gammastep -l 39.863850:-75.132339
 
-# See https://wiki.hyprland.org/Configuring/Keywords/ for more
-
-# Execute your favorite apps at launch
-# exec-once = waybar & hyprpaper & firefox
-
-# Source a file (multi-file configs)
-# source = ~/.config/hypr/myColors.conf
-
-exec-once = waybar & hyprpaper & gammastep -l 39.863850:-75.132339
-
-# For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
     kb_layout = us
     kb_variant =
