@@ -84,12 +84,6 @@
         };
       };
     };
-    hyprland = {
-      enable = false;
-      package = pkgs.hyprland.override {
-        nvidiaPatches = true;
-      };
-    };
   };
 
   fonts.fonts = with pkgs; [
