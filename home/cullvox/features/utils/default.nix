@@ -11,6 +11,8 @@
         #python39Packages.requests # For wttr.in on waybar
 
         xdg-utils
+        
+        pass
 
         networkmanagerapplet # Makes controlling wpa-enterprise connections on NM easier
         playerctl # Controls pause/play/next on audio/video
@@ -27,14 +29,18 @@
         element-desktop # Matrix communicator and better alternative to discord
         #jdk18
         ventoy-bin # Easily create flash drives that can launch isos
-        
-            
-        # WII
-        wiimms-iso-tools
+        spotify-tui
 
         # UNFREE
-        spotify # Good music cannot go away from it
+        # spotify # Good music cannot go away from it
         zoom-us
         (discord.override { withOpenASAR = true; }) # Better better discord, much more efficent
     ];
+    services.spotifyd = {
+        enable = true;
+    };
+    xdg.configFile."spotifyd" = {
+        source = ./spotifyd;
+        recursive = true;
+    };
 }

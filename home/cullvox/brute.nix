@@ -3,7 +3,7 @@
     ./common/global.nix
     ./global
     ./desktop/hyprland
-    ./desktop/hyprland/nvidia.nix
+    #./desktop/hyprland/nvidia.nix
     ./features/programming
     ./features/utils
     ./features/gaming
