@@ -43,9 +43,9 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-      ];
     };
+    nvidia.open = true;
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   users.users.cullvox = {
@@ -57,6 +57,8 @@
     ];
   };
 
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

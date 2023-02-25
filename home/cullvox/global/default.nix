@@ -31,4 +31,6 @@
     stateVersion = lib.mkDefault "22.05";
   };
 
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
+
 }

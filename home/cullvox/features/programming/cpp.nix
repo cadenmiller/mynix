@@ -5,5 +5,12 @@
 
     gcc
     cmake
+    ninja
+
+    vulkan-headers
+    vulkan-loader
+    vulkan-tools
+    vulkan-validation-layers
+    glslang
   ];
 }
