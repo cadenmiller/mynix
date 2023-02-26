@@ -25,7 +25,7 @@
   };
 
   # Set our hostname here, instead of globally
-  networking.hostName = "mini";
+  networking.hostName = "brute";
 
   environment.sessionVariables = rec {
     WLR_NO_HARDWARE_CURSORS = "1";

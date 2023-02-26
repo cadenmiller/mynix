@@ -10,7 +10,6 @@
       hidpi = true;
     };
     nvidiaPatches = true;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
   };
   
 }
