@@ -37,9 +37,9 @@
         gnome.nautilus
 
         # UNFREE
-        #spotify # Good music cannot go away from it
+        spotify # Good music cannot go away from it
         zoom-us
-        (discord.override { withOpenASAR = true; }) # Better better discord, much more efficent
+        #(discord.override { withOpenASAR = true; }) # Better better discord, much more efficent
     ];
     services.gpg-agent.enable = true;
     services.spotifyd =

@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, pkgs, ... }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
   ];
@@ -10,6 +10,7 @@
       hidpi = true;
     };
     nvidiaPatches = true;
+    extraConfig = (import ./config.nix);
   };
   
 }
